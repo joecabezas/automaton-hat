@@ -3,31 +3,31 @@
 
 #include <Adafruit_PWMServoDriver.h>
 
+#include "servo_cell_indexes.h"
+
 Adafruit_PWMServoDriver pwm = Adafruit_PWMServoDriver();
 
-#define SERVOMIN  103
-#define SERVOMAX  512
+#define SERVOMIN  103 // 0.5ms
+#define SERVOMAX  512 // 2.5ms
 #define SERVO_FREQ 50
 #define SERVO_COUNT 1
 
-// our servo # counter
 uint8_t servonum = 0;
 
 void setup() {
-  Serial.begin(115200);
-  Serial.println("SETUP");
+  //Serial.begin(115200);
+  //Serial.println("SETUP");
 
   pwm.begin();
 
   pwm.setOscillatorFrequency(27000000);
-  pwm.setPWMFreq(SERVO_FREQ);  // Analog servos run at ~50 Hz updates
+  pwm.setPWMFreq(SERVO_FREQ);
 
   delay(10);
 }
 
 void loop() {
-  // Drive each servo one at a time using setPWM()
-  Serial.println(servonum);
+  //Serial.println(servonum);
   for (uint16_t pulselen = SERVOMIN; pulselen < SERVOMAX; pulselen++) {
     pwm.setPWM(servonum, 0, pulselen);
   }
@@ -40,5 +40,5 @@ void loop() {
   delay(500);
 
   servonum++;
-  if (servonum > SERVO_COUNT - 1) servonum = 0; // Testing the first 8 servo channels
+  if (servonum > SERVO_COUNT - 1) servonum = 0;
 }
