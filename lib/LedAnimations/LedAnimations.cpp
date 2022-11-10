@@ -1,16 +1,11 @@
-#include "c_types.h"
-#include <FastLED.h>
-
 #include <LedAnimations.h>
-#include <LedCartesianCoordinates.h>
-#include <MathUtils.h>
 
 uint8 MAX_LED_X = 110;
 uint8 MAX_LED_Y = 120;
 
 std::vector<void (*)(CRGB*, uint8, unsigned long t, unsigned long delta)> LED_ANIMATIONS = {
-  sparks,
-  // wave_y,
+  // sparks,
+  wave_y,
   // swipe_y,
   // swipe_x,
 };
@@ -41,6 +36,7 @@ void swipe_y(CRGB* leds, uint8 i, unsigned long t, unsigned long delta){
   }
 }
 
+// math preview: https://www.math3d.org/irthsArmy
 void wave_y(CRGB* leds, uint8 i, unsigned long t, unsigned long delta){
   float x = LED_CARTESIAN_COORDINATES[i][0];
   float y = LED_CARTESIAN_COORDINATES[i][1];

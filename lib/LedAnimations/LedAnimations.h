@@ -3,6 +3,8 @@
 
 #include "c_types.h"
 #include <FastLED.h>
+#include <LedCartesianCoordinates.h>
+#include <MathUtils.h>
 
 void swipe_x(CRGB* leds, uint8 i, unsigned long t, unsigned long delta);
 void swipe_y(CRGB* leds, uint8 i, unsigned long t, unsigned long delta);
